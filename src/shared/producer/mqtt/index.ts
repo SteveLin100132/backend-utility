@@ -9,5 +9,7 @@
  * @NOTE
  */
 
+export * from './dynamic-topic-mqtt-producer.adapter';
+export * from './mqtt-dynamic-topic-message';
 export * from './mqtt-json-producer.strategy';
 export * from './mqtt-producer.adapter';

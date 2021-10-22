@@ -1,8 +1,8 @@
 /**
  * 專案名稱： wistroni40-backend-utility
  * 部門代號： MLD500
- * 檔案說明： MQTT 資料生產者轉接器
- * @CREATE Monday, 27th September 2021 8:17:42 am
+ * 檔案說明： 動態主題 MQTT 資料生產者轉接器
+ * @CREATE Friday, 22nd October 2021 4:32:02 pm
  * @author Steve Y Lin
  * @contact Wits.SteveYLin@wistron.com #1342
  * -----------------------------------------------------------------------------
@@ -10,20 +10,22 @@
  */
 
 import { Client, IClientPublishOptions } from 'mqtt';
-import { ProducerAdapter, PublishCallback } from './../../../core';
+import { MqttDynamicTopicMessage } from 'src/shared';
+import { ProducerAdapter, PublishCallback } from '../../../core';
 
 /**
- * MQTT 資料生產者轉接器
+ * 動態主題 MQTT 資料生產者轉接器
  */
-export class MqttProducerAdapter extends ProducerAdapter<Client, string> {
+export class DynamicTopicMqttProducerAdapter extends ProducerAdapter<
+  Client,
+  MqttDynamicTopicMessage
+> {
   /**
    * @param producer      資料生產者
-   * @param topic         要上拋的主題
    * @param publishedOpts 上拋配置
    */
   constructor(
     protected producer: Client,
-    protected topic: string,
     protected publishedOpts?: IClientPublishOptions,
   ) {
     super(producer);
@@ -36,17 +38,18 @@ export class MqttProducerAdapter extends ProducerAdapter<Client, string> {
    * @param message 資料
    * @param cb      上拋回呼
    */
-  public publish(message: string, cb?: PublishCallback): void {
-    const topic = this.topic;
+  public publish(message: MqttDynamicTopicMessage, cb?: PublishCallback): void {
+    const topic = message.topic;
+    const payload = message.message;
     const options = this.publishedOpts;
     if (options) {
-      this.producer.publish(topic, message, options, (error, packet) => {
+      this.producer.publish(topic, payload, options, (error, packet) => {
         if (cb) {
           cb(error, packet);
         }
       });
     } else {
-      this.producer.publish(topic, message, (error, packet) => {
+      this.producer.publish(topic, payload, (error, packet) => {
         if (cb) {
           cb(error, packet);
         }
