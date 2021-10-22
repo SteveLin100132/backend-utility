@@ -17,12 +17,12 @@ import { ConsumerAdapter } from './../../../core';
  */
 export declare class MqttConsumerAdapter extends ConsumerAdapter<MqttClient, IPublishPacket> {
     protected consumer: MqttClient;
-    protected topic: string;
+    protected topic: string | string[];
     /**
      * @param consumer 資料消費者
      * @param topic    要訂閱的主題
      */
-    constructor(consumer: MqttClient, topic: string);
+    constructor(consumer: MqttClient, topic: string | string[]);
     /**
      * 消費資料
      *

@@ -25,7 +25,10 @@ export class MqttConsumerAdapter extends ConsumerAdapter<
    * @param consumer 資料消費者
    * @param topic    要訂閱的主題
    */
-  constructor(protected consumer: MqttClient, protected topic: string) {
+  constructor(
+    protected consumer: MqttClient,
+    protected topic: string | string[],
+  ) {
     super(consumer);
   }
 

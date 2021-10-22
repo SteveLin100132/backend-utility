@@ -43,8 +43,8 @@ npm i wistroni40-backend-utility --save
 
 # Example
 
-- [MQTT Consumer 範例](https://github.com/SteveLin100132/wistroni40-backend-utilityblob/master/examples/consumer/mqtt-consumer.ts)
-- [Kafka JSON Consumer 範例](https://github.com/SteveLin100132/wistroni40-backend-utilityblob/master/examples/consumer/kafka-json-consumer.ts)
+- [MQTT Consumer 範例](https://github.com/SteveLin100132/wistroni40-backend-utility/blob/master/examples/consumer/mqtt-consumer.ts)
+- [Kafka JSON Consumer 範例](https://github.com/SteveLin100132/wistroni40-backend-utility/blob/master/examples/consumer/kafka-json-consumer.ts)
 
 # Consumer API
 
