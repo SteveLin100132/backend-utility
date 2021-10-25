@@ -1,6 +1,6 @@
 {
   "name": "wistroni40-backend-utility",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Wistron I4.0 Backend Job Utility",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
