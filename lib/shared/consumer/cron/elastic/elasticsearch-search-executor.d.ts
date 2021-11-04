@@ -27,7 +27,7 @@ export declare class ElasticsearchSearchExecutor implements CronExecutor<Transpo
      * @param _queryBuilder    查詢語句建構者
      * @param _resolveStrategy 資料解析策略
      */
-    constructor(_client: Client, _index: string, _type: string, _queryBuilder: ElasticBuilder, _resolveStrategy?: 'hits' | 'aggs');
+    constructor(_client: Client, _index: string, _type: string | undefined, _queryBuilder: ElasticBuilder, _resolveStrategy?: 'hits' | 'aggs');
     /**
      * 執行特定動作
      *

@@ -30,7 +30,7 @@ export class ElasticsearchSearchExecutor
   constructor(
     private _client: Client,
     private _index: string,
-    private _type: string,
+    private _type: string | undefined,
     private _queryBuilder: ElasticBuilder,
     private _resolveStrategy: 'hits' | 'aggs' = 'hits',
   ) {}
