@@ -1,6 +1,6 @@
 {
   "name": "wistroni40-backend-utility",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Wistron I4.0 Backend Job Utility",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -65,6 +65,7 @@
     "rxjs": "^6.6.7",
     "uuid": "^8.3.2",
     "wisrtoni40-confluent-schema": "0.0.1",
-    "wistroni40-es-flatter": "^1.0.2"
+    "wistroni40-es-flatter": "^1.0.2",
+    "wistroni40-retry": "0.0.4"
   }
 }

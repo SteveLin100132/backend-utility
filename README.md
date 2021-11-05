@@ -39,6 +39,7 @@ npm i wistroni40-backend-utility --save
   - 提供 HTTP(Axios) Post 轉接器
   - 提供 MQTT Producer 轉接器
   - 提供動態主題 MQTT Producer 轉接器
+  - 提供帶有重拋機制的 Producer 轉接器
 - Template
   - 提供基礎作業流程範本
 
