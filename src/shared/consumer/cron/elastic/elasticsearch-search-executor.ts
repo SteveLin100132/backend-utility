@@ -9,7 +9,6 @@
  * @NOTE
  */
 
-import { TransportRequestPromise } from '@elastic/elasticsearch/lib/Transport';
 import { Client } from 'elasticsearch';
 import { CronExecutor, ElasticBuilder } from '../../../../core';
 import { ElasticAggsStrategy, ElasticHitsStrategy } from './../../../consumer';
@@ -17,9 +16,7 @@ import { ElasticAggsStrategy, ElasticHitsStrategy } from './../../../consumer';
 /**
  * ElasticSearch 查詢排程執行器
  */
-export class ElasticsearchSearchExecutor
-  implements CronExecutor<TransportRequestPromise<any>>
-{
+export class ElasticsearchSearchExecutor<T = any> implements CronExecutor<T[]> {
   /**
    * @param _client          ElasticSearch客戶端
    * @param _index           ElasticSearch Index
@@ -41,7 +38,7 @@ export class ElasticsearchSearchExecutor
    * @method public
    * @return 回傳執行結果
    */
-  public async exec(): Promise<TransportRequestPromise<any>> {
+  public async exec(): Promise<T[]> {
     // 建構查詢語句
     const query = this._queryBuilder.build().toJSON();
 
@@ -52,7 +49,7 @@ export class ElasticsearchSearchExecutor
       body: query,
     });
     return this._resolveStrategy === 'hits'
-      ? new ElasticHitsStrategy().resolve(result as any)
-      : new ElasticAggsStrategy().resolve(result as any);
+      ? new ElasticHitsStrategy<T>().resolve(result as any)
+      : new ElasticAggsStrategy<T>().resolve(result as any);
   }
 }

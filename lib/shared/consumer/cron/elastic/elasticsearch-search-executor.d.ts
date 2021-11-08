@@ -8,13 +8,12 @@
  * -----------------------------------------------------------------------------
  * @NOTE
  */
-import { TransportRequestPromise } from '@elastic/elasticsearch/lib/Transport';
 import { Client } from 'elasticsearch';
 import { CronExecutor, ElasticBuilder } from '../../../../core';
 /**
  * ElasticSearch 查詢排程執行器
  */
-export declare class ElasticsearchSearchExecutor implements CronExecutor<TransportRequestPromise<any>> {
+export declare class ElasticsearchSearchExecutor<T = any> implements CronExecutor<T[]> {
     private _client;
     private _index;
     private _type;
@@ -34,5 +33,5 @@ export declare class ElasticsearchSearchExecutor implements CronExecutor<Transpo
      * @method public
      * @return 回傳執行結果
      */
-    exec(): Promise<TransportRequestPromise<any>>;
+    exec(): Promise<T[]>;
 }
