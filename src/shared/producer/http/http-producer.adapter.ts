@@ -9,7 +9,7 @@
  * @NOTE
  */
 
-import axios, { AxiosInstance } from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { ProducerAdapter, PublishCallback } from '../../../core';
 
 /**
@@ -20,9 +20,15 @@ export class HttpProducerAdapter<D = any> extends ProducerAdapter<
   D
 > {
   /**
+   * @param _url     HTTP 查詢路徑
+   * @param _config  HTTP 查詢配置
    * @param producer 資料生產者
    */
-  constructor(private _url: string, protected producer: AxiosInstance = axios) {
+  constructor(
+    private _url: string,
+    private _config?: AxiosRequestConfig,
+    protected producer: AxiosInstance = axios,
+  ) {
     super(producer);
   }
 
@@ -35,7 +41,7 @@ export class HttpProducerAdapter<D = any> extends ProducerAdapter<
    */
   public publish(data: D, cb?: PublishCallback): void {
     this.producer
-      .post(this._url, data)
+      .post(this._url, data, this._config)
       .then(res => (cb ? cb(null, res) : null))
       .catch(err => (cb ? cb(err, null) : null));
   }

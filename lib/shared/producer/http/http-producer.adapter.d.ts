@@ -8,18 +8,21 @@
  * -----------------------------------------------------------------------------
  * @NOTE
  */
-import { AxiosInstance } from 'axios';
+import { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { ProducerAdapter, PublishCallback } from '../../../core';
 /**
  * HTTP 資料生產者轉接器
  */
 export declare class HttpProducerAdapter<D = any> extends ProducerAdapter<AxiosInstance, D> {
     private _url;
+    private _config?;
     protected producer: AxiosInstance;
     /**
+     * @param _url     HTTP 查詢路徑
+     * @param _config  HTTP 查詢配置
      * @param producer 資料生產者
      */
-    constructor(_url: string, producer?: AxiosInstance);
+    constructor(_url: string, _config?: AxiosRequestConfig<any> | undefined, producer?: AxiosInstance);
     /**
      * 上拋資料
      *
