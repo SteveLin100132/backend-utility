@@ -61,5 +61,5 @@ export declare abstract class BasicTemplate<S = any, R = any, P = any> {
      * @method public
      * @return 回傳流程執行結果
      */
-    execute(): Promise<Observable<P>>;
+    execute(): Promise<Observable<any>>;
 }

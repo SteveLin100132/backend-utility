@@ -69,7 +69,7 @@ export abstract class BasicTemplate<S = any, R = any, P = any> {
    * @method public
    * @return 回傳流程執行結果
    */
-  public async execute(): Promise<Observable<P>> {
+  public async execute(): Promise<Observable<any>> {
     const consumer = await this.consumer();
     const producer = await this.producer();
     return consumer.consume().pipe(
