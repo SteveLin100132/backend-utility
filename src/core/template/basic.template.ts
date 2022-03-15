@@ -10,7 +10,7 @@
  */
 
 import { Observable } from 'rxjs';
-import { mergeMap, tap } from 'rxjs/operators';
+import { filter, mergeMap, tap } from 'rxjs/operators';
 import { Consumer } from '../consumer';
 import { Log4js, LoggerAdapter } from '../logger';
 import { Producer } from '../producer';
@@ -75,8 +75,12 @@ export abstract class BasicTemplate<S = any, R = any, P = any> {
     return consumer.consume().pipe(
       // 解析消費後的資料
       mergeMap(message => this.resolve(message)),
+      // 排除沒有資料的情況
+      filter(message => message !== undefined && message !== null),
       // 打包發送數據
       mergeMap(message => this.payload(message)),
+      // 排除沒有資料的情況
+      filter(message => message !== undefined && message !== null),
       // 發送數據
       tap(payload => producer.publish(payload)),
     );
