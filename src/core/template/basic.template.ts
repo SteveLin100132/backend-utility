@@ -30,6 +30,16 @@ export abstract class BasicTemplate<S = any, R = any, P = any> {
   constructor(protected id = 'PROCESS') {}
 
   /**
+   * 取得流程 ID
+   *
+   * @method public
+   * @return 回傳流程 ID
+   */
+  public getId(): string {
+    return this.id;
+  }
+
+  /**
    * 取得資料消費者
    *
    * @method public

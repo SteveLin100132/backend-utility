@@ -26,6 +26,13 @@ export declare abstract class BasicTemplate<S = any, R = any, P = any> {
      */
     constructor(id?: string);
     /**
+     * 取得流程 ID
+     *
+     * @method public
+     * @return 回傳流程 ID
+     */
+    getId(): string;
+    /**
      * 取得資料消費者
      *
      * @method public
