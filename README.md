@@ -1,9 +1,9 @@
-# wistroni40-backend-utility
+# backend-utility
 
 # Install
 
 ```
-npm i wistroni40-backend-utility --save
+npm i backend-utility --save
 ```
 
 # Table of Contents
