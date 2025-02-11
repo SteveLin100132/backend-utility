@@ -1,5 +1,7 @@
 # backend-utility
 
+backend-utility 是一個 Node.js 函式庫，提供後端開發常用的工具，涵蓋日誌管理、排程處理、資料消費（Consumer）與生產（Producer）等功能，並支援 Kafka、MQTT、ElasticSearch 等數據來源。它透過抽象轉接器設計，讓開發者能夠自由擴展並客製化不同數據來源的整合。
+
 # Install
 
 ```
